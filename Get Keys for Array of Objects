@@ -1,0 +1,23 @@
+let y = {'name':'ahmed','surename':'demir'};
+
+
+console.log(Object.keys(y))
+
+
+
+// now for array of objects
+
+let a = [{'name':'ahmed','surename':'demir'},{add:'add',z:'zz'},{u:'plus'}];
+
+
+
+
+
+let keys = [];
+
+a.map(e=>{
+    keys.push(...Object.keys(e));
+
+})
+
+console.log(keys)
