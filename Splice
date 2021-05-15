@@ -1,0 +1,13 @@
+let a = [1,2,3,4,5];
+let deletedElements = a.splice(2,3); // delete 3 elements from the 2 position [1,2]
+
+console.log('new array ',a);
+
+console.log('deleted elements ', deletedElements)
+
+let del = a.splice(2); // a = [1,2] delete from the second position to the end ; del = [3,4,5] 
+
+// let b = a.splice(2,3)
+
+
+console.log(del)
