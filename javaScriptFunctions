@@ -1,0 +1,63 @@
+const express = require("express");
+const app = express();
+const port = 3000;
+const axios = require("axios");
+var fs = require('fs');
+app.get("/", (req, res) => {
+    let count = 0;
+  axios
+    .get("https://coderbyte.com/api/challenges/json/age-counting")
+    .then(function (response) {
+        var all = response.data.data;
+      // handle success
+      //   console.log(response.data.data);
+      fs.appendFile('d:/ahmet.txt', all, function (err) {
+        if (err) throw err;
+     //   console.log('Saved!');
+      });
+     
+      
+//       var arr = all.split(",");
+
+// let de = arr.find((age)=>age==="32");
+// console.log(de)
+//      arr.map((e,i)=>{
+//       if(e.includes("age="))
+//       {
+//         //   console.log(e)
+//         let temp =e.slice( e.indexOf('=')+1,e.length);
+//         if(temp ==="32")
+//         {
+// count++;
+//         }
+
+//       }
+//      })
+
+ //JSON.stringify convert an object to a string
+ //JSON.parse convert a string to an object 
+var example = "age=32";
+var tt = example.slice(example.indexOf("=")+1,example.length); // 32 get the value after (=) symbole
+
+var obj = response.data.data;
+var objArr = obj.split(","); // convert a string to an array in every comma make after it an element
+objArr = objArr.filter((e)=>e.includes("age=32")); // find all ages when it is equal to 32
+console.log(objArr.length)
+// let ft = obj.find(e=>obj.age);
+// console.log(ft)
+
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
+    //   console.log(count)
+    });
+  res.send("Hello World!");
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
